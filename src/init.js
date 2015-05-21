@@ -35,10 +35,21 @@ $(document).ready(function(){
     $('body').css('background-color', 'red');
   });
   //lineup button behavior
+  var linedUp = false;
   $(".lineUp").on("click", function(event){
-    window.dancers.forEach(function(dancer, i) {
-      dancer.lineUp(i);
-    });
+    if (!linedUp) {
+      window.dancers.forEach(function(dancer) {
+        dancer.lineUp();
+      });
+    } else {
+      window.dancers.forEach(function(dancer) {
+        dancer.$node.animate({
+          top: $("body").height() * Math.random(),
+          left: $("body").width() * Math.random()
+        }, 2000);
+      });
+    }
+    linedUp = !linedUp;
   });
 });
 

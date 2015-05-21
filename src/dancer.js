@@ -30,7 +30,8 @@ Dancer.prototype.addHTML = function (htmlString) {
 }
 
 Dancer.prototype.lineUp = function (i) {
-  this.top = "50%";
-  this.left = i * $('body').width() / window.dancers.length;
-  this.setPosition();
+  this.$node.animate({
+    top: ($('body').height() - this.$node.height())/2,
+    left: i * $('body').width() / window.dancers.length
+  }, 2000);
 }
