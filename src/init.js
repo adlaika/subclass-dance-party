@@ -29,5 +29,9 @@ $(document).ready(function(){
     );
     $('body').append(dancer.$node);
   });
+  //bgswap button behavior
+  $(".backgroundSwap").on("click", function(event){
+    $('body').css('background-color', 'red');
+  });
 });
 

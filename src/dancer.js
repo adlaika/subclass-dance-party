@@ -21,8 +21,8 @@ Dancer.prototype.setPosition = function() {
   this.$node.css(styleSettings);
 };
 
-Dancer.prototype.editCSS = function () {
-  this.$node.css(this.newStyle);
+Dancer.prototype.editCSS = function (newStyle) {
+  this.$node.css(newStyle);
 }
 
 Dancer.prototype.addHTML = function (htmlString) {

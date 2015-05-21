@@ -23,3 +23,35 @@ body, a:link, a:visited, a:active{
 .dancer{
   position:absolute;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    background-color: red;
+  }
+  50% {
+    background-color: orange;
+  }
+}
+
+@keyframes nudge {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(50px, 0);
+  }
+
+  80% {
+    transform: translate(-50px, 0);
+  }
+}
+
+@keyframes spin {
+  0%, 100% {
+    transform: rotateY(0deg)
+  }
+  50% {
+    transform: rotateY(180deg)
+  }
+}
