@@ -1,8 +1,8 @@
-var Dancer = function(top, left, timeBetweenSteps) {
+var Dancer = function(top, left, timeBetweenSteps, id) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = $('<span class="dancer" id='+id+'></span>');
 
   this.step();
   this.setPosition();
@@ -34,4 +34,28 @@ Dancer.prototype.lineUp = function (i) {
     top: ($('body').height() - this.$node.height())/2,
     left: i * $('body').width() / window.dancers.length
   }, 2000);
+}
+
+Dancer.prototype.animate = function (time) {
+  this.$node.animate({
+    top: this.top,
+    left: this.left
+  }, time);
+}
+
+Dancer.prototype.findNearest = function () {
+  //debugger;
+  var dist = Infinity;
+  var closest = null;
+  var that = this;
+  window.dancers.forEach(function(dancer, i) {
+    if(dancer !== that) {
+      var cur = Math.hypot(dancer.top-that.top,dancer.left-that.left);
+       if (cur < dist) {
+        closest = dancer;
+        dist = cur;
+       }
+     }
+  });
+  return closest;
 }

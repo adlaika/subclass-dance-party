@@ -25,15 +25,19 @@ $(document).ready(function(){
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000,
+      window.dancers.length
     );
+    dancer.$node.me = dancer;
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
+
   //bgswap button behavior
   $(".backgroundSwap").on("click", function(event){
     $('body').css('background-color', 'red');
   });
+
   //lineup button behavior
   var linedUp = false;
   $(".lineUp").on("click", function(event){
@@ -50,6 +54,11 @@ $(document).ready(function(){
       });
     }
     linedUp = !linedUp;
+  });
+
+  //grind behavior
+  $("body").on("click", ".snoop", function(event) {
+    window.dancers[$(this.parentNode).attr('id')].grind();
   });
 });
 
