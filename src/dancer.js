@@ -30,10 +30,9 @@ Dancer.prototype.addHTML = function (htmlString) {
 }
 
 Dancer.prototype.lineUp = function (i) {
-  this.$node.animate({
-    top: ($('body').height() - this.$node.height())/2,
-    left: i * $('body').width() / window.dancers.length
-  }, 2000);
+  this.top = ($('body').height() - this.$node.height())/2;
+  this.left = i * $('body').width() / window.dancers.length;
+  this.animate(2000);
 }
 
 Dancer.prototype.animate = function (time) {

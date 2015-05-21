@@ -9,7 +9,6 @@ Snoop.prototype.constructor = Snoop;
 
 Snoop.prototype.grind = function() {
   var closest = this.findNearest();
-  console.dir(closest);
   if (closest !== null) {
     //midle of closest = cloest.top - cloests.height/2
     this.top = closest.top + closest.$node.height()/2 - this.$node.height()/2;

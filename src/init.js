@@ -47,10 +47,9 @@ $(document).ready(function(){
       });
     } else {
       window.dancers.forEach(function(dancer) {
-        dancer.$node.animate({
-          top: $("body").height() * Math.random(),
-          left: $("body").width() * Math.random()
-        }, 2000);
+        dancer.top = $("body").height() * Math.random()
+        dancer.left = $("body").width() * Math.random()
+        dancer.animate(2000);
       });
     }
     linedUp = !linedUp;
