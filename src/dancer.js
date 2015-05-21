@@ -1,19 +1,22 @@
-var Dancer = function(top, left, timeBetweenSteps, id) {
+var Dancer = function (top, left, timeBetweenSteps, id) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
-  this.$node = $('<span class="dancer" id='+id+'></span>');
+  this.$node = $('<span class="dancer" id=' + id + '></span>');
+  this.$node.on('click', function () {
+    this.clickFn();
+  }.bind(this));
 
   this.step();
   this.setPosition();
 };
 
-Dancer.prototype.step = function() {
+Dancer.prototype.step = function () {
   var that = this;
   setTimeout(this.step.bind(that), this.timeBetweenSteps);
 };
 
-Dancer.prototype.setPosition = function() {
+Dancer.prototype.setPosition = function () {
   var styleSettings = {
     top: this.top,
     left: this.left
@@ -30,7 +33,7 @@ Dancer.prototype.addHTML = function (htmlString) {
 }
 
 Dancer.prototype.lineUp = function (i) {
-  this.top = ($('body').height() - this.$node.height())/2;
+  this.top = ($('body').height() - this.$node.height()) / 2;
   this.left = i * $('body').width() / window.dancers.length;
   this.animate(2000);
 }
@@ -47,14 +50,14 @@ Dancer.prototype.findNearest = function () {
   var dist = Infinity;
   var closest = null;
   var that = this;
-  window.dancers.forEach(function(dancer, i) {
-    if(dancer !== that) {
-      var cur = Math.hypot(dancer.top-that.top,dancer.left-that.left);
-       if (cur < dist) {
+  window.dancers.forEach(function (dancer, i) {
+    if (dancer !== that) {
+      var cur = Math.hypot(dancer.top - that.top, dancer.left - that.left);
+      if (cur < dist) {
         closest = dancer;
         dist = cur;
-       }
-     }
+      }
+    }
   });
   return closest;
 }

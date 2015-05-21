@@ -1,7 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function () {
   window.dancers = [];
 
-  $(".addDancerButton").on("click", function(event){
+  $(".addDancerButton").on("click", function (event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on index.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -34,19 +34,19 @@ $(document).ready(function(){
   });
 
   //bgswap button behavior
-  $(".backgroundSwap").on("click", function(event){
+  $(".backgroundSwap").on("click", function (event) {
     $('body').css('background-color', 'red');
   });
 
   //lineup button behavior
   var linedUp = false;
-  $(".lineUp").on("click", function(event){
+  $(".lineUp").on("click", function (event) {
     if (!linedUp) {
-      window.dancers.forEach(function(dancer) {
+      window.dancers.forEach(function (dancer) {
         dancer.lineUp();
       });
     } else {
-      window.dancers.forEach(function(dancer) {
+      window.dancers.forEach(function (dancer) {
         dancer.top = $("body").height() * Math.random()
         dancer.left = $("body").width() * Math.random()
         dancer.animate(2000);
@@ -54,10 +54,4 @@ $(document).ready(function(){
     }
     linedUp = !linedUp;
   });
-
-  //grind behavior
-  $("body").on("click", ".snoop", function(event) {
-    window.dancers[$(this.parentNode).attr('id')].grind();
-  });
 });
-
