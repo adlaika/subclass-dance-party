@@ -28,3 +28,9 @@ Dancer.prototype.editCSS = function (newStyle) {
 Dancer.prototype.addHTML = function (htmlString) {
   this.$node.append(htmlString);
 }
+
+Dancer.prototype.lineUp = function (i) {
+  this.top = "50%";
+  this.left = i * $('body').width() / window.dancers.length;
+  this.setPosition();
+}

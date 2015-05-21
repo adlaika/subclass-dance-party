@@ -28,10 +28,17 @@ $(document).ready(function(){
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
   //bgswap button behavior
   $(".backgroundSwap").on("click", function(event){
     $('body').css('background-color', 'red');
+  });
+  //lineup button behavior
+  $(".lineUp").on("click", function(event){
+    window.dancers.forEach(function(dancer, i) {
+      dancer.lineUp(i);
+    });
   });
 });
 
